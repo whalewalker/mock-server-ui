@@ -29,7 +29,7 @@ const Login: React.FC = () => {
                 try {
                     const response = await authApi.authenticateWithOAuth('google', event.data.token);
                     setTokens(response);
-                    queryClient.invalidateQueries();
+                    await queryClient.invalidateQueries();
                     navigate('/dashboard');
                 } catch (error) {
                     console.error('Authentication failed:', error);
